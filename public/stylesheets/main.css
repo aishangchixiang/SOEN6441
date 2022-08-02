@@ -1,0 +1,92 @@
+body {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:link, a:visited {
+    color: steelblue;
+}
+
+a:hover, a:active {
+    color: midnightblue;
+}
+
+.centeredBlock {
+    display: grid;
+    place-items: center;
+    padding: 5% 10%
+}
+
+.searchBar {
+    border-radius: 25px;
+    min-width: 20em;
+    padding: 1em;
+}
+
+.searchBlock {
+}
+
+.searchButton {
+    border-radius: 25px;
+    background: cornflowerblue;
+    color: whitesmoke;
+    min-width: 5em;
+    min-height: 3em;
+    border-style: none;
+}
+
+.searchButton:hover {
+    background: darkslateblue;
+}
+
+input:focus {
+    outline: none !important;
+}
+
+.projectTable {
+    border-collapse: collapse;
+}
+
+.projectTable td {
+    text-align: center;
+    border: 1px solid;
+}
+
+.skillsTable {
+    border: none
+}
+
+.skillsTable td {
+    text-align: center;
+    border: none;
+}
+
+th {
+    padding: 2em;
+}
+
+.projectTitle {
+    text-align: left;
+}
+
+.wordStatsTable {
+    margin: 2em;
+    text-align: center;
+    border-collapse: collapse;
+    border:solid black 3px;
+    border-radius:6px;
+}
+
+.wordStatsTable td, .wordStatsTable th {
+    padding: 0.5em;
+    border: dotted black 2px;
+}
+
+.wordStatsTable th {
+    background-color: lightsteelblue;
+}
+

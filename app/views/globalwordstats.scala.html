@@ -1,0 +1,46 @@
+@(keywords: String)
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Global Word Statistics</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/main.css")'>
+        <link rel="stylesheet" media="screen" href='@routes.Assets.versioned("stylesheets/prism.css")'>
+        <link rel="shortcut icon" type="image/png" href='@routes.Assets.versioned("images/favicon.png")'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src='@routes.Assets.versioned("javascripts/prism.js")' type="text/javascript"></script>
+    </head>
+
+    <body>
+        <section>
+            <div class="centeredBlock">
+                <h1>Global words statistics for the search result using the keywords "@keywords"</h1>
+                <div id="result">
+                        <!-- Result placeholder -->
+                </div>
+            </div>
+        </section>
+    </body>
+
+    <script>
+
+        // Get the keywords and create/open the web socket
+        let keywords = window.location.pathname.split("/").pop();
+        const statsSocket = new WebSocket('ws://localhost:9000/statsSocket');
+
+        // Send the keywords through the web socket for the StatsActor to process them
+        statsSocket.addEventListener('open', function (event) {
+            statsSocket.send(JSON.stringify({
+                global: 'true',
+                keywords: keywords
+            }));
+        });
+
+        // Parse the response from the web socket and display it
+        statsSocket.addEventListener('message', function (event) {
+            $('#result').append(JSON.parse(event.data).result);
+        });
+
+    </script>
+</html>

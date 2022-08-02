@@ -1,0 +1,26 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page with project search request result display
+GET        /                             controllers.HomeController.index(request: Request)
+# Route used for search requests
+GET        /searchSocket                 controllers.HomeController.searchSocket
+GET        /skill/:skill                 controllers.HomeController.skill(skill: String)
+
+# Routes used for the statistics feature
+GET        /searchstats/:keywords        controllers.HomeController.searchStats(keywords: String)
+GET        /stats/:id                    controllers.HomeController.stats(id: Long)
+
+GET        /statsSocket                  controllers.HomeController.statsSocket
+# Readability
+GET        /readability/:id              controllers.HomeController.readability(id: Long)
+GET        /readabilitySocket            controllers.HomeController.readabilitySocket
+
+GET        /employer/:owner_id           controllers.HomeController.employer(owner_id:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET        /assets/*file                 controllers.Assets.versioned(path="/public", file: Asset)
+
+GET        /skillSocket                  controllers.HomeController.skillSocket
+GET        /profileSocket                controllers.HomeController.profileSocket
